@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 """
 
 import os
+import posixpath
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -38,9 +39,12 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'mysite.apps.MysiteConfig',
+    'ckeditor',
+    'ckeditor_uploader',
+
 ]
 
-MIDDLEWARE = [
+MIDDLEWARE_CLASSES = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -77,8 +81,13 @@ WSGI_APPLICATION = 'web_site_me.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'web_site_me',
+        'USER': 'root',
+        'PASSWORD': 'admin123',
+        'HOST': '127.0.0.1',
+        'PORT': '3306',
+        'CHARSET':'utf8',
     }
 }
 
@@ -105,9 +114,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/2.0/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'zh-Hans'#'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Shanghai'#'UTC'
 
 USE_I18N = True
 
@@ -120,3 +129,28 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = posixpath.join(*(BASE_DIR.split(os.path.sep)+['static']))
+
+MEDIA_ROOT = os.path.join(BASE_DIR,'media').replace('\\','/')
+MEDIA_URL = '/media/'
+
+CKEDITOR_IMAGE_BAKEND = 'pillow'
+CKEDITOR_UPLOAD_PATH = 'article_images/'
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': (
+			['div','Source','-','Save','NewPage','Preview','-','Templates'],
+			['Cut','Copy','Paste','PasteText','PasteFromWord','-','Print','SpellChecker','Scayt'],
+			['Undo','Redo','-','Find','Replace','-','SelectAll','RemoveFormat'],
+			['Form','Checkbox','Radio','TextField','Textarea','Select','Button', 'ImageButton','HiddenField'],
+			['Bold','Italic','Underline','Strike','-','Subscript','Superscript'],
+			['NumberedList','BulletedList','-','Outdent','Indent','Blockquote'],
+			['JustifyLeft','JustifyCenter','JustifyRight','JustifyBlock'],
+			['Link','Unlink','Anchor'],
+			['Image','Flash','Table','HorizontalRule','Smiley','SpecialChar','PageBreak'],
+			['Styles','Format','Font','FontSize'],
+			['TextColor','BGColor'],
+			['Maximize','ShowBlocks','-','About', 'pbckcode'],
+		),
+	}
+}
