@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
+<<<<<<< HEAD
     <data-source source="LOCAL" name="web_site_me@localhost" uuid="2cb0a116-3bbf-467a-9a34-c6ff1759d932">
       <driver-ref>mysql</driver-ref>
       <synchronize>true</synchronize>
@@ -29,6 +30,17 @@
         <property name="characterEncoding" value="utf8" />
         <property name="characterSetResults" value="utf8" />
         <property name="yearIsDateType" value="false" />
+=======
+    <data-source source="LOCAL" name="Django default" uuid="14bdcdee-55ae-4868-a623-24cecdf4be9d">
+      <driver-ref>sqlite.xerial</driver-ref>
+      <synchronize>true</synchronize>
+      <imported>true</imported>
+      <remarks>$PROJECT_DIR$/web_site_me/settings.py</remarks>
+      <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
+      <jdbc-url>jdbc:sqlite:$PROJECT_DIR$/db.sqlite3</jdbc-url>
+      <driver-properties>
+        <property name="enable_load_extension" value="true" />
+>>>>>>> 06007b7ad333eb9211097e71ed1964f34c632333
       </driver-properties>
     </data-source>
   </component>
