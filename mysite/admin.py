@@ -8,7 +8,7 @@ class PostAdmin(admin.ModelAdmin):
     list_display = ('title','author','created_time','publish','status')
     list_filter = ('status','created_time','publish','author')
     search_fields = ('title','body')
-    prepopulated_fields = {'slug':('title',)}
+    #prepopulated_fields = {'slug':('title',)}
     raw_id_fields = ('author',)
     date_hierarchy = 'publish'
     ordering = ['status','publish']
@@ -26,7 +26,7 @@ class TagAdmin(admin.ModelAdmin):
 admin.site.register(Tag,TagAdmin)
 
 class CommentAdmin(admin.ModelAdmin):
-    list_display = ('post','reader_name','created_time','active')
+    list_display = ('post','reader_name','body','created_time','active')
     list_filter = ('active','created_time',)
     search_fields = ('reader_name','body')
 

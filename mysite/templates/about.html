@@ -1,501 +1,98 @@
-﻿<!DOCTYPE html>
+﻿{% extends 'base.html' %}
+{% load static %}
+{% block title %}关于{% endblock %}
+{% block contents %}
+<!--contents-->
+<div class="grid-container">
 
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Foundation for Sites</title>
-    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
-    <style type="text/css"></style>
-    <link rel="stylesheet" href="css/foundation.css">
-    <link rel="stylesheet" href="css/foundation-icons.css">
-    <link rel="stylesheet" href="css/app.css">
-</head>
-<body>
-    <div class="off-canvas-wrapper">
-        <div class="off-canvas position-left" id="offCanvasLeft" data-off-canvas>
-            <!--navbar vertical-->
-            <div class="grid-container">
-            </div>
-            <ul class="vertical menu">
-                <li class="menu-text"><h1>smatter.cn</h1></li>
-                <li class="has-submenu">
-                    <a href="#0"><b>Python Web</b></a>
-                    <ul class="submenu menu vertical" data-submenu style="margin-left:20px; ">
-                        <li><a href="#0">前端</a></li>
-                        <li><a href="#0">Python</a></li>
-                        <li><a href="#0">Django</a></li>
-                        <li><a href="#0">other</a></li>
-                    </ul>
-                </li>
-                <li class="has-submenu">
-                    <a href="#0"><b>Mechanical</b></a>
-                    <ul class="submenu menu vertical" data-submenu style="margin-left:20px; ">
-                        <li><a href="#0">Mechanical Engineering</a></li>
-                        <li><a href="#0">Design</a></li>
-                        <li><a href="#0">other</a></li>
-                    </ul>
-                </li>
-                <li class="has-submenu">
-                    <a href="#0"><b>Besides</b></a>
-                    <ul class="submenu menu vertical" data-submenu style="margin-left:20px; ">
-                        <li><a href="#0">Life</a></li>
-                        <li><a href="#0">Thinking</a></li>
-                        <li><a href="#0">About</a></li>
-                    </ul>
-                </li>
+    <ul class="tabs" data-responsive-accordion-tabs="accordion medium-tabs large-tabs" id="example-tabs">
+        <li class="tabs-title is-active"><a href="#panel1" aria-selected="true">关于本站</a></li>
+        <li class="tabs-title"><a href="#panel2">关于作者</a></li>
+        <li class="tabs-title"><a href="#panel3">留言墙</a></li>
+        <li class="tabs-title"><a href="#panel4">友情链接</a></li>
+    </ul>
 
-            </ul>
-        </div>
-        <div class="off-canvas-content" data-off-canvas-content>
-            <!--top navbar-->
-            <div class="grid-container">
-                <div class="title-bar hide-for-medium">
-                    <div class="title-bar-left">
-                        <div class="title-bar-title">Welcome to my blog</div>
-                    </div>
-                    <div class="title-bar-right" data-responsive-toggle="responsive-menu" data-hide-for="medium">
-                        <!--<button class="menu-icon" type="button" data-toggle="responsive-menu"></button>-->
-                        <button class="menu-icon" type="button" data-open="offCanvasLeft"></button>
-                        <div class="title-bar-title"></div>
-                    </div>
-                </div>
-                <div class="top-bar" id="responsive-menu">
-                    <div class="top-bar-left">
-                        <ul class="dropdown menu" data-dropdown-menu>
-                            <li class="menu-text">smatter.cn</li>
-                            <li class="has-submenu ">
-                                <a href="#0">Python Web</a>
-                                <ul class="submenu menu vertical" data-submenu>
-                                    <li class=""><a href="#0">前端</a></li>
-                                    <li><a href="#0">Python</a></li>
-                                    <li><a href="#0">Django</a></li>
-                                    <li><a href="#0">other</a></li>
-                                </ul>
-                            </li>
-                            <li class="has-submenu">
-                                <a href="#0">Mechanical</a>
-                                <ul class="submenu menu vertical" data-submenu>
-                                    <li><a href="#0">Mechanical Engineering</a></li>
-                                    <li><a href="#0">Design</a></li>
-                                    <li><a href="#0">other</a></li>
-                                </ul>
-                            </li>
-                            <li class="has-submenu">
-                                <a href="#0">Besides</a>
-                                <ul class="submenu menu vertical" data-submenu>
-                                    <li><a href="#0">Life</a></li>
-                                    <li><a href="#0">Thinking</a></li>
-                                    <li><a href="#0">About</a></li>
-                                </ul>
-                            </li>
-
-                        </ul>
-                    </div>
-                    <!--
-            <div class="top-bar-right">
-                <ul class="menu">
-                    <li><input type="search" placeholder="Search"></li>
-                    <li><button type="button" class="button">Search</button></li>
-                </ul>
-            </div>
-                -->
-                </div>
-            </div><!--top navbar-->
-            <br />
-            <!--contents-->
-            <div class="grid-container">
-                
-                <ul class="tabs" data-responsive-accordion-tabs="accordion medium-tabs large-tabs" id="example-tabs">
-                    <li class="tabs-title is-active"><a href="#panel1" aria-selected="true">关于本站</a></li>
-                    <li class="tabs-title"><a href="#panel2">关于作者</a></li>
-                    <li class="tabs-title"><a href="#panel3">留言墙</a></li>
-                    <li class="tabs-title"><a href="#panel4">友情链接</a></li>
-                </ul>
-                
-                <div class="tabs-content" data-tabs-content="example-tabs">
-                    <!--关于本站-->
-                    <div class="tabs-panel is-active" id="panel1">
-                        <p>one</p>
-                        <p>Check me out! I'm a super cool Tab panel with text content!</p>
-                    </div><!--关于本站-->
-                    <!--关于作者-->
-                    <div class="tabs-panel" id="panel2">
-                        <p>two</p>
-                        <img class="thumbnail" src="img/01.jpg">
-                    </div><!--关于作者-->
-                    <!--留言墙-->
-                    <div class="tabs-panel" id="panel3">
-                        <!--提交评论-->
-                        <form class="grid-container" data-abide novalidate>
-                            <div class="grid-x grid-padding-x">
-                                <label class="small-12 medium-12 large-12">
-                                    <textarea placeholder="承蒙赐教，感激不尽！" required></textarea>
-                                </label>
-
-                                <label class="small-6 medium-4 large-3">
-                                    <input type="text" placeholder="您的昵称" required />
-                                </label>
-                                <button class="button success small-offset-2 small-4 medium-offset-1 medium-3 large-2" type="submit">提交评论</button>
-
-                            </div>
-                        </form><!--提交评论-->
-                        <!--评论列表-->
-                        <h5>留言墙</h5>
-                        <hr style="height:1px;border:none;margin-top:5px;padding:0;border-top:1px dashed #808080;" />
-                        <ul class="grid-container">
-                            <li class="grid-x grid-padding-x" style="color:#808080;">
-                                <div class="small-11">
-                                    <span class="">Smatter</span>&nbsp;&nbsp;&nbsp;<span>2018-01-09&nbsp;&nbsp;12:29:49</span>
-                                </div>
-                                <div class="small-1 text-right">
-                                    <span>1#</span>
-                                </div>
-                                <div class="small-12">
-                                    <p>this is a comment,and there will be anther people's comments.</p>
-                                </div>
-                            </li>
-                            <li class="grid-x grid-padding-x" style="color:#808080;">
-                                <div class="small-11">
-                                    <span class="">Smatter</span>&nbsp;&nbsp;&nbsp;<span>2018-01-09&nbsp;&nbsp;12:29:49</span>
-                                </div>
-                                <div class="small-1 text-right">
-                                    <span>1#</span>
-                                </div>
-                                <div class="small-12">
-                                    <p>this is a comment,and there will be anther people's comments.</p>
-                                </div>
-                            </li>
-                        </ul><!--评论列表-->
-                        <ul class="pagination text-center" role="navigation" aria-label="Pagination">
-                            <li class="pagination-previous disabled">Previous</li>
-                            <li class="current"><span class="show-for-sr">You're on page</span> 1</li>
-                            <li><a href="#" aria-label="Page 2">2</a></li>
-                            <li><a href="#" aria-label="Page 3">3</a></li>
-                            <li><a href="#" aria-label="Page 4">4</a></li>
-                            <li class="ellipsis"></li>
-                            <li><a href="#" aria-label="Page 12">12</a></li>
-                            <li><a href="#" aria-label="Page 13">13</a></li>
-                            <li class="pagination-next"><a href="#" aria-label="Next page">Next</a></li>
-                        </ul>
-                    </div><!--留言墙-->
-                    <!--友情链接-->
-                    <div class="tabs-panel" id="panel4">
-                        <div class="grid-container">
-                            <div class="grid-x grid-padding-x small-up-2 medium-up-4 large-up-5">
-                                <div class="cell">
-                                    <div class="callout text-center" style="padding:2px;">
-                                        <img class="hide-for-small-only" src="img/01.jpg" alt="" />
-                                        <small><a href="">百度一下</a></small>
-                                    </div>
-                                </div>
-                                <div class="cell">
-                                    <div class="callout text-center" style="padding:2px;">
-                                        <img class="hide-for-small-only" src="img/02.jpg" />
-                                        <small><a href="">百度一下</a></small>
-                                    </div>
-                                </div>
-                                <div class="cell">
-                                    <div class="callout text-center" style="padding:2px;">
-                                        <img class="hide-for-small-only" src="img/03.jpg" alt="" />
-                                        <small><a href="">百度一下</a></small>
-                                    </div>
-                                </div>
-                                <div class="cell">
-                                    <div class="callout text-center" style="padding:2px;">
-                                        <img class="hide-for-small-only" src="img/04.jpg" />
-                                        <small><a href="">百度一下</a></small>
-                                    </div>
-                                </div>
-                                <div class="cell">
-                                    <div class="callout text-center" style="padding:2px;">
-                                        <img class="hide-for-small-only" src="img/05.jpg" alt="" />
-                                        <small><a href="">百度一下</a></small>
-                                    </div>
-                                </div>
-                                <div class="cell">
-                                    <div class="callout text-center" style="padding:2px;">
-                                        <img class="hide-for-small-only" src="img/06.png" />
-                                        <small><a href="">百度一下</a></small>
-                                    </div>
-                                </div>
-                                <div class="cell">
-                                    <div class="callout text-center" style="padding:2px;">
-                                        <img class="hide-for-small-only" src="img/07.jpg" alt="" />
-                                        <small><a href="">百度一下</a></small>
-                                    </div>
-                                </div>
-                                <div class="cell">
-                                    <div class="callout text-center" style="padding:2px;">
-                                        <img class="hide-for-small-only" src="img/08.png" />
-                                        <small><a href="">百度一下</a></small>
-                                    </div>
-                                </div>
-                                <div class="cell">
-                                    <div class="callout text-center" style="padding:2px;">
-                                        <img class="hide-for-small-only" src="img/01.jpg" alt="" />
-                                        <small><a href="">百度一下</a></small>
-                                    </div>
-                                </div>
-                                <div class="cell">
-                                    <div class="callout text-center" style="padding:2px;">
-                                        <img class="hide-for-small-only" src="img/02.jpg" />
-                                        <small><a href="">百度一下</a></small>
-                                    </div>
-                                </div>
-                                <div class="cell">
-                                    <div class="callout text-center" style="padding:2px;">
-                                        <img class="hide-for-small-only" src="img/03.jpg" alt="" />
-                                        <small><a href="">百度一下</a></small>
-                                    </div>
-                                </div>
-                                <div class="cell">
-                                    <div class="callout text-center" style="padding:2px;">
-                                        <img class="hide-for-small-only" src="img/04.jpg" />
-                                        <small><a href="">百度一下</a></small>
-                                    </div>
-                                </div>
-                                <div class="cell">
-                                    <div class="callout text-center" style="padding:2px;">
-                                        <img class="hide-for-small-only" src="img/05.jpg" alt="" />
-                                        <small><a href="">百度一下</a></small>
-                                    </div>
-                                </div>
-                                <div class="cell">
-                                    <div class="callout text-center" style="padding:2px;">
-                                        <img class="hide-for-small-only" src="img/06.png" />
-                                        <small><a href="">百度一下</a></small>
-                                    </div>
-                                </div>
-                                <div class="cell">
-                                    <div class="callout text-center" style="padding:2px;">
-                                        <img class="hide-for-small-only" src="img/07.jpg" alt="" />
-                                        <small><a href="">百度一下</a></small>
-                                    </div>
-                                </div>
-                                <div class="cell">
-                                    <div class="callout text-center" style="padding:2px;">
-                                        <img class="hide-for-small-only" src="img/08.png" />
-                                        <small><a href="">百度一下</a></small>
-                                    </div>
-                                </div>
-                                <div class="cell">
-                                    <div class="callout text-center" style="padding:2px;">
-                                        <img class="hide-for-small-only" src="img/01.jpg" alt="" />
-                                        <small><a href="">百度一下</a></small>
-                                    </div>
-                                </div>
-                                <div class="cell">
-                                    <div class="callout text-center" style="padding:2px;">
-                                        <img class="hide-for-small-only" src="img/02.jpg" />
-                                        <small><a href="">百度一下</a></small>
-                                    </div>
-                                </div>
-                                <div class="cell">
-                                    <div class="callout text-center" style="padding:2px;">
-                                        <img class="hide-for-small-only" src="img/03.jpg" alt="" />
-                                        <small><a href="">百度一下</a></small>
-                                    </div>
-                                </div>
-                                <div class="cell">
-                                    <div class="callout text-center" style="padding:2px;">
-                                        <img class="hide-for-small-only" src="img/04.jpg" />
-                                        <small><a href="">百度一下</a></small>
-                                    </div>
-                                </div>
-                                <div class="cell">
-                                    <div class="callout text-center" style="padding:2px;">
-                                        <img class="hide-for-small-only" src="img/05.jpg" alt="" />
-                                        <small><a href="">百度一下</a></small>
-                                    </div>
-                                </div>
-                                <div class="cell">
-                                    <div class="callout text-center" style="padding:2px;">
-                                        <img class="hide-for-small-only" src="img/06.png" />
-                                        <small><a href="">百度一下</a></small>
-                                    </div>
-                                </div>
-                                <div class="cell">
-                                    <div class="callout text-center" style="padding:2px;">
-                                        <img class="hide-for-small-only" src="img/07.jpg" alt="" />
-                                        <small><a href="">百度一下</a></small>
-                                    </div>
-                                </div>
-                                <div class="cell">
-                                    <div class="callout text-center" style="padding:2px;">
-                                        <img class="hide-for-small-only" src="img/08.png" />
-                                        <small><a href="">百度一下</a></small>
-                                    </div>
-                                </div>
-                                <div class="cell">
-                                    <div class="callout text-center" style="padding:2px;">
-                                        <img class="hide-for-small-only" src="img/01.jpg" alt="" />
-                                        <small><a href="">百度一下</a></small>
-                                    </div>
-                                </div>
-                                <div class="cell">
-                                    <div class="callout text-center" style="padding:2px;">
-                                        <img class="hide-for-small-only" src="img/02.jpg" />
-                                        <small><a href="">百度一下</a></small>
-                                    </div>
-                                </div>
-                                <div class="cell">
-                                    <div class="callout text-center" style="padding:2px;">
-                                        <img class="hide-for-small-only" src="img/03.jpg" alt="" />
-                                        <small><a href="">百度一下</a></small>
-                                    </div>
-                                </div>
-                                <div class="cell">
-                                    <div class="callout text-center" style="padding:2px;">
-                                        <img class="hide-for-small-only" src="img/04.jpg" />
-                                        <small><a href="">百度一下</a></small>
-                                    </div>
-                                </div>
-                                <div class="cell">
-                                    <div class="callout text-center" style="padding:2px;">
-                                        <img class="hide-for-small-only" src="img/05.jpg" alt="" />
-                                        <small><a href="">百度一下</a></small>
-                                    </div>
-                                </div>
-                                <div class="cell">
-                                    <div class="callout text-center" style="padding:2px;">
-                                        <img class="hide-for-small-only" src="img/06.png" />
-                                        <small><a href="">百度一下</a></small>
-                                    </div>
-                                </div>
-                                <div class="cell">
-                                    <div class="callout text-center" style="padding:2px;">
-                                        <img class="hide-for-small-only" src="img/07.jpg" alt="" />
-                                        <small><a href="">百度一下</a></small>
-                                    </div>
-                                </div>
-                                <div class="cell">
-                                    <div class="callout text-center" style="padding:2px;">
-                                        <img class="hide-for-small-only" src="img/08.png" />
-                                        <small><a href="">百度一下</a></small>
-                                    </div>
-                                </div>
-                                <div class="cell">
-                                    <div class="callout text-center" style="padding:2px;">
-                                        <img class="hide-for-small-only" src="img/01.jpg" alt="" />
-                                        <small><a href="">百度一下</a></small>
-                                    </div>
-                                </div>
-                                <div class="cell">
-                                    <div class="callout text-center" style="padding:2px;">
-                                        <img class="hide-for-small-only" src="img/02.jpg" />
-                                        <small><a href="">百度一下</a></small>
-                                    </div>
-                                </div>
-                                <div class="cell">
-                                    <div class="callout text-center" style="padding:2px;">
-                                        <img class="hide-for-small-only" src="img/03.jpg" alt="" />
-                                        <small><a href="">百度一下</a></small>
-                                    </div>
-                                </div>
-                                <div class="cell">
-                                    <div class="callout text-center" style="padding:2px;">
-                                        <img class="hide-for-small-only" src="img/04.jpg" />
-                                        <small><a href="">百度一下</a></small>
-                                    </div>
-                                </div>
-                                <div class="cell">
-                                    <div class="callout text-center" style="padding:2px;">
-                                        <img class="hide-for-small-only" src="img/05.jpg" alt="" />
-                                        <small><a href="">百度一下</a></small>
-                                    </div>
-                                </div>
-                                <div class="cell">
-                                    <div class="callout text-center" style="padding:2px;">
-                                        <img class="hide-for-small-only" src="img/06.png" />
-                                        <small><a href="">百度一下</a></small>
-                                    </div>
-                                </div>
-                                <div class="cell">
-                                    <div class="callout text-center" style="padding:2px;">
-                                        <img class="hide-for-small-only" src="img/07.jpg" alt="" />
-                                        <small><a href="">百度一下</a></small>
-                                    </div>
-                                </div>
-                                <div class="cell">
-                                    <div class="callout text-center" style="padding:2px;">
-                                        <img class="hide-for-small-only" src="img/08.png" />
-                                        <small><a href="">百度一下</a></small>
-                                    </div>
-                                </div>
-                                <div class="cell">
-                                    <div class="callout text-center" style="padding:2px;">
-                                        <img class="hide-for-small-only" src="img/01.jpg" alt="" />
-                                        <small><a href="">百度一下</a></small>
-                                    </div>
-                                </div>
-                                <div class="cell">
-                                    <div class="callout text-center" style="padding:2px;">
-                                        <img class="hide-for-small-only" src="img/02.jpg" />
-                                        <small><a href="">百度一下</a></small>
-                                    </div>
-                                </div>
-                                <div class="cell">
-                                    <div class="callout text-center" style="padding:2px;">
-                                        <img class="hide-for-small-only" src="img/03.jpg" alt="" />
-                                        <small><a href="">百度一下</a></small>
-                                    </div>
-                                </div>
-                                <div class="cell">
-                                    <div class="callout text-center" style="padding:2px;">
-                                        <img class="hide-for-small-only" src="img/04.jpg" />
-                                        <small><a href="">百度一下</a></small>
-                                    </div>
-                                </div>
-                                <div class="cell">
-                                    <div class="callout text-center" style="padding:2px;">
-                                        <img class="hide-for-small-only" src="img/05.jpg" alt="" />
-                                        <small><a href="">百度一下</a></small>
-                                    </div>
-                                </div>
-                                <div class="cell">
-                                    <div class="callout text-center" style="padding:2px;">
-                                        <img class="hide-for-small-only" src="img/06.png" />
-                                        <small><a href="">百度一下</a></small>
-                                    </div>
-                                </div>
-                                <div class="cell">
-                                    <div class="callout text-center" style="padding:2px;">
-                                        <img class="hide-for-small-only" src="img/07.jpg" alt="" />
-                                        <small><a href="">百度一下</a></small>
-                                    </div>
-                                </div>
-                                <div class="cell">
-                                    <div class="callout text-center" style="padding:2px;">
-                                        <img class="hide-for-small-only" src="img/08.png" />
-                                        <small><a href="">百度一下</a></small>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div><!--友情链接-->
-
-                </div>
-                
+    <div class="tabs-content" data-tabs-content="example-tabs">
+        <!--关于本站-->
+        <div class="tabs-panel is-active" id="panel1">
+            {% for about_site_post in aboutsite_posts %}
+                {{ about_site_post.body|safe }}
+            {% endfor %}
+        </div><!--关于本站-->
+        <!--关于作者-->
+        <div class="tabs-panel" id="panel2">
+            {% for about_me_post in aboutme_posts %}
+                {{ about_me_post.body|safe }}
+            {% endfor %}
+        </div><!--关于作者-->
+        <!--留言墙-->
+        <div class="tabs-panel" id="panel3">
+            <!--提交评论-->
+            <form class="grid-container" action="" method="post" data-abide novalidate>
                 <div class="grid-x grid-padding-x">
+                    <label class="small-12 medium-12 large-12">
+                        <textarea name="message_body" placeholder="承蒙赐教，感激不尽！" required></textarea>
+                    </label>
 
+                    <label class="small-6 medium-4 large-3">
+                        <input type="text" name="message_name" placeholder="您的昵称" required />
+                    </label>
+                    <button class="button success small-offset-2 small-4 medium-offset-1 medium-3 large-2" type="submit">提交评论</button>
+                    {% csrf_token %}
+                </div>
+            </form><!--提交评论-->
+            <!--评论列表-->
+            <h5>留言墙</h5>
+            <hr style="height:1px;border:none;margin-top:5px;padding:0;border-top:1px dashed #808080;" />
+            <ul class="grid-container">
+            {% if messages.count %}
+                {% for message in messages %}
+                <li class="grid-x grid-padding-x" style="color:#808080;">
+                    <div class="small-11">
+                        <span class="">{{ message.name }}</span>&nbsp;&nbsp;&nbsp;<span>{{ message.created }}</span>
+                    </div>
+                    <div class="small-1 text-right">
+                        <span>{{ forloop.revcounter }}#</span>
+                    </div>
+                    <div class="small-12">
+                        {{ message.body }}
+                    </div>
+                </li>
+                {% endfor %}
+            {% endif %}
+            </ul><!--评论列表-->
+            <ul class="pagination text-center" role="navigation" aria-label="Pagination">
+                <li class="pagination-previous disabled">Previous</li>
+                <li class="current"><span class="show-for-sr">You're on page</span> 1</li>
+                <li><a href="#" aria-label="Page 2">2</a></li>
+                <li><a href="#" aria-label="Page 3">3</a></li>
+                <li><a href="#" aria-label="Page 4">4</a></li>
+                <li class="ellipsis"></li>
+                <li><a href="#" aria-label="Page 12">12</a></li>
+                <li><a href="#" aria-label="Page 13">13</a></li>
+                <li class="pagination-next"><a href="#" aria-label="Next page">Next</a></li>
+            </ul>
+        </div><!--留言墙-->
+        <!--友情链接-->
+        <div class="tabs-panel" id="panel4">
+            <div class="grid-container">
+                <div class="grid-x grid-padding-x small-up-2 medium-up-4 large-up-5">
+                    {% for friend_web_site in friend_web_list  %}
+                    <div class="cell">
+                        <div class="callout text-center" style="padding:2px;">
+                            <img class="hide-for-small-only" src="{{ friend_web_site.logo_pic.url }}" alt="" />
+                            <small><a href="{{ friend_web_site.web_address }}" target="_blank">{{ friend_web_site.friend_web_name }}</a></small>
+                        </div>
+                    </div>
+                    {% endfor %}
                 </div>
             </div>
-            <hr style="border:1px solid #555 ;" />
+        </div><!--友情链接-->
 
-            <div class="footer text-center">
-                Design by Bingo <a href="">沪ICP备11002373号-1</a>
-                <br />
-                E-mail:1358223058@qq.com
-            </div>
-            <br />
-        </div>
     </div>
-    <script src="js/vendor/jquery.js"></script>
-    <script src="js/vendor/what-input.js"></script>
-    <script src="js/vendor/foundation.js"></script>
-    <script src="js/app.js"></script>
 
-</body>
-</html>
+    <div class="grid-x grid-padding-x">
+
+    </div>
+</div>
+{% endblock %}

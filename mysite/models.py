@@ -17,7 +17,7 @@ from ckeditor_uploader.fields import RichTextUploadingField
 # Create your models here.
 
 class Category(models.Model):
-    name=models.CharField(max_length=100)
+    name=models.CharField(max_length=100,verbose_name='添加分类')
 
     def __str__(self):
         return self.name
@@ -29,7 +29,7 @@ class Category(models.Model):
 
 
 class Tag(models.Model):
-    name=models.CharField(max_length=100)
+    name=models.CharField(max_length=100,verbose_name='添加标签项')
 
     class Meta:
         verbose_name='标签'
@@ -45,23 +45,23 @@ class PublishedManager(models.Manager):
 class Post(models.Model):
     STATUS_CHOICES=(('draft','Draft'),('published','Published'),)
     title=models.CharField(max_length=250,verbose_name='文章标题')
-    slug=models.SlugField(max_length=250,unique_for_date='publish')
+    #slug=models.SlugField(max_length=250,unique_for_date='publish')
     #thumb=ImageWithThumbsField(upload_to='photos/thumbs/%Y/%m/%d/',sizes=((200,90),))
     #post_thumb=get_thumbnail(upload_to='photos/thumbs/%Y/%m/%d/','186x90',corp='center',quality=99)
-    category=models.ForeignKey(Category)
-    tags=models.ManyToManyField(Tag,blank=True)
-    author=models.ForeignKey(User,related_name='blog_posts')
+    category=models.ForeignKey(Category,verbose_name='类别')
+    tags=models.ManyToManyField(Tag,blank=True,verbose_name='标签',help_text='标签数量控制在四个以内')
+    author=models.ForeignKey(User,related_name='mysite_posts',verbose_name='作者')
     body=RichTextUploadingField(default='',verbose_name='正文')
     publish=models.DateTimeField(default=timezone.now,verbose_name='发布时间')
     created_time=models.DateTimeField(auto_now_add=True)
     updated_time=models.DateTimeField(auto_now=True)
     status=models.CharField(max_length=10,choices=STATUS_CHOICES,default='published',verbose_name='文章状态')
-    views=models.PositiveIntegerField(default=0)
+    views=models.PositiveIntegerField(default=0,verbose_name='默认阅读数量')
     objects=models.Manager()
     published=PublishedManager()
 
     class Meta:
-        ordering=('-publish',)
+        ordering=('-created_time',)
         verbose_name='文章'
         verbose_name_plural='文章'
 
@@ -72,7 +72,7 @@ class Post(models.Model):
         return reverse('mysite:post_detail',args=[self.publish.year,
                                                   self.publish.strftime('%m'),
                                                   self.publish.strftime('%d'),
-                                                  self.slug])
+                                                  self.id])
 
     def views_count(self):
         self.views += 1
@@ -80,12 +80,11 @@ class Post(models.Model):
 
 
 class Comment(models.Model):
-    post=models.ForeignKey(Post,related_name='comments')
+    post=models.ForeignKey(Post,related_name='comments',verbose_name='评论所属文章')
     reader_name=models.CharField(max_length=80,null=True,verbose_name='读者名字')
-    body=models.TextField()
-    created_time=models.DateTimeField(auto_now_add=True)
-    views=models.PositiveIntegerField(default=0)
-    active=models.BooleanField(default=True)
+    body=models.TextField(verbose_name='评论内容')
+    created_time=models.DateTimeField(auto_now_add=True,verbose_name='评论时间')
+    active=models.BooleanField(default=True,verbose_name='是否可用')
 
     class Meta:
         ordering=('created_time',)
@@ -119,7 +118,7 @@ class AboutMe(models.Model):
         verbose_name_plural='关于作者'
 
 class FriendWeb(models.Model):
-    logo_pic=models.ImageField(upload_to='photos/friend_log/%Y/%m/%d/',verbose_name='友情链接logo图片',help_text='请上传40*120像素logo')
+    logo_pic=models.ImageField(upload_to='photos/friend_log/%Y/%m/%d/',verbose_name='友情链接logo图片',help_text='请上传120*40像素logo')
     friend_web_name=models.CharField(max_length=80,verbose_name='网站名字')
     web_address=models.CharField(max_length=100,verbose_name='网址')
     created=models.DateTimeField(auto_now_add=True)

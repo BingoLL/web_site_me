@@ -1,21 +1,27 @@
 ﻿{% extends 'base.html' %}
 {% load static %}
 {% block title %}smatter{% endblock %}
-            <!--contents-->
+<!--contents-->
 {% block contents %}
 <div class="grid-container">
     <div class="grid-x grid-padding-x">
         <!--List contents-->
         <div class="small-12 medium-8 large-8 cell" style="">
-            <div class="callout">
+            {% if tag %}
+                <div class="callout">
+                    <h5 style="color:#808080;">包含【{{ tag }}】标签的文章列表(共有{{ posts_count }}篇)</h5>
+                </div>
+            {% endif %}
+            {% if cate %}
+                <div class="callout">
+                    <h5 style="color:#808080;">【{{ cate }}】分类下的文章列表(共有{{ posts_count }}篇)</h5>
+                </div>
+            {% endif %}
 
-                <h5 style="color:#808080;">包含【Python】标签的文章列表</h5>
-
-            </div>
             {% for post in posts %}
             <div class="callout">
 
-                <h4><a href="detail.html">{{ post.title }}</a></h4>
+                <h4><a href="{{ post.get_absolute_url }}" target="_blank">{{ post.title }}</a></h4>
                 <div class="grid-x grid-padding-x">
                     <div class="medium-4 large-4 cell hide-for-small-only">
                         <img src="{% static 'img/01.jpg' %}">
@@ -25,18 +31,18 @@
                     </div>
                 </div>
                 <span class=""><i class="fi-calendar">&nbsp;{{ post.created_time }}</i></span>
-                <span>&nbsp;&nbsp;&nbsp;<i class="fi-folder">&nbsp;{{ post.category }}</i></span>
-                <span class="hide-for-small-only">&nbsp;&nbsp;&nbsp;<i class="fi-pricetag-multiple">&nbsp;
+                <span>&nbsp;<i class="fi-folder">&nbsp;<a href="{% url 'mysite:post_list_by_cate' cate_slug=post.category.id %}">{{ post.category }}</a></i></span>
+                <span class="hide-for-small-only">&nbsp;<i class="fi-pricetag-multiple">
                 {% for tag in post.tags.all %}
-                    <a>{{ tag.name }}</a>
-                    {% if not forloop.last %} 、 {% endif %}
+                    <a href="{% url 'mysite:post_list_by_tag' tag_slug=tag.id %}">{{ tag.name }}</a>
+                    {% if not forloop.last %},{% endif %}
                 {% endfor %}
                 </i></span>
                 <span class="" style="float:right"><i class="fi-eye">{{ post.views }}</i>&nbsp;&nbsp;&nbsp;<i class="fi-comments">&nbsp;{{ post.comments.count }}</i></span>
             </div>
             {% endfor %}
 
-           {% include 'pagination.html' %}
+           {% include 'pagination.html' with page=posts %}
         </div><!--List contents-->
         <!--sidebar-right-->
         {% include 'side-bar.html' %}

@@ -3115,7 +3115,7 @@ a.button:hover, a.button:focus {
   .pagination .ellipsis::after {
     padding: 0.1875rem 0.625rem;
     content: '\2026';
-    color: #0a0a0a; }
+    color: #ffffff; }
 
 .pagination-previous a::before,
 .pagination-previous.disabled::before {
@@ -3633,7 +3633,7 @@ a.button:hover, a.button:focus {
     padding-bottom: 3rem;
     padding-left: 3rem; }
   .callout:hover{
-    background:rgba(202, 202, 202, 0.17);}
+    background:rgba(202, 202, 202, 0.01);}
 
 .card {
   display: -ms-flexbox;

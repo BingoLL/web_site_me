@@ -6,12 +6,16 @@
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>{% block title %}{% endblock %}</title>
     <link rel="shortcut icon" href="{% static 'img/favicon.ico"' %} type="image/x-icon">
     <style type="text/css"></style>
     <link rel="stylesheet" href="{% static 'css/foundation.css"' %}">
     <link rel="stylesheet" href="{% static 'css/foundation-icons.css' %}">
     <link rel="stylesheet" href="{% static 'css/app.css' %}">
+    <script>
+        JavaScript:window.history.forward(1);
+    </script>
 </head>
 <body>
     <div class="off-canvas-wrapper">
@@ -62,13 +66,13 @@
                         <ul class="dropdown menu" data-dropdown-menu >
                             <li class="menu-text">smatter.cn</li>
                             <li class="has-submenu ">
-                                <a href="#0">文章列表</a>
+                                <a href="{% url 'mysite:post_list' %}" {% block target %}target="_parent"{% endblock%}>文章列表</a>
+                            </li>
+                            <li class="has-submenu hide">
+                                <a href="" >其他</a>
                             </li>
                             <li class="has-submenu">
-                                <a href="#0">其他</a>
-                            </li>
-                            <li class="has-submenu">
-                                <a href="#0">关于</a>
+                                <a href="{% url 'mysite:about' %}">关于</a>
                             </li>
                             
                         </ul>
@@ -97,10 +101,10 @@
             <br />
         </div>
     </div>
-        <script src="js/vendor/jquery.js"></script>
-        <script src="js/vendor/what-input.js"></script>
-        <script src="js/vendor/foundation.js"></script>
-        <script src="js/app.js"></script>
+        <script src="{% static 'js/vendor/jquery.js' %}"></script>
+        <script src="{% static 'js/vendor/what-input.js' %}"></script>
+        <script src="{% static 'js/vendor/foundation.js' %}"></script>
+        <script src="{% static 'js/app.js' %}"></script>
 
 </body>
 </html>
