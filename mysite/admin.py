@@ -1,8 +1,12 @@
 from django.contrib import admin
-from .models import Category,Tag,Post,Comment,AboutMe,AboutSite,FriendWeb,MessageBoard
+from .models import Category,Tag,Post,Comment,AboutMe,AboutSite,FriendWeb,MessageBoard,WebSettings
+from sorl.thumbnail.admin import AdminImageMixin
 
 
 # Register your models here.
+
+class PostThumbAdmin(AdminImageMixin,admin.ModelAdmin):
+    pass
 
 class PostAdmin(admin.ModelAdmin):
     list_display = ('title','author','created_time','publish','status')
@@ -54,3 +58,8 @@ class MessageBoardAdmin(admin.ModelAdmin):
     search_fields = ('name','body')
 
 admin.site.register(MessageBoard,MessageBoardAdmin)
+
+class WebSettingsAdmin(admin.ModelAdmin):
+    list_display = ('web_name','web_footer_body','active')
+
+admin.site.register(WebSettings,WebSettingsAdmin)

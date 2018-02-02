@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     'mysite.apps.MysiteConfig',
     'ckeditor',
     'ckeditor_uploader',
-
+    'sorl.thumbnail',
+    'easy_thumbnails',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -153,4 +154,11 @@ CKEDITOR_CONFIGS = {
 			['Maximize','ShowBlocks','-','About', 'pbckcode'],
 		),
 	}
+}
+
+
+THUMNAIL_ALIASES = {
+    '': {
+        'avatar': {'size':(186,90),'crop':True},
+    },
 }

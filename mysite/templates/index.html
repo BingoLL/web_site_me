@@ -1,4 +1,5 @@
 ﻿{% extends 'base.html' %}
+{% load thumbnail %}
 {% load static %}
 {% block title %}smatter{% endblock %}
 <!--contents-->
@@ -24,7 +25,16 @@
                 <h4><a href="{{ post.get_absolute_url }}" target="_blank">{{ post.title }}</a></h4>
                 <div class="grid-x grid-padding-x">
                     <div class="medium-4 large-4 cell hide-for-small-only">
-                        <img src="{% static 'img/01.jpg' %}">
+                    {% if post.post_thumb %}
+                        {% thumbnail post.post_thumb '186x90' crop="80% top" as im %}
+                        <img src="{{ im.url }}">
+                        {% endthumbnail %}
+                    {% else %}
+                        {% thumbnail '' '186x90' crop="80% top" as im %}
+                        <img src="{% static 'img/thumb-default-01.gif' %}">
+                        {% endthumbnail %}
+                        <img src="{% static 'img/thumb-default-01.gif' %}">
+                    {% endif %}
                     </div>
                     <div class="small-12 medium-8 large-8 cell">
                        {{ post.body|striptags|safe|truncatechars:49|linebreaks }}

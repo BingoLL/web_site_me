@@ -24,7 +24,7 @@
             <div class="grid-container">
             </div>
             <ul class="vertical menu">
-                <li class="menu-text"><h1>smatter.cn</h1></li>
+                <li class="menu-text"><h1>{% for web_setting in web_settings %}{{ web_setting.web_name }}{% endfor %}</h1></li>
                 <li class="has-submenu">
                     <a href="#0"><b>文章列表分类</b></a>
                     <ul class="submenu menu vertical" data-submenu style="margin-left:20px; ">
@@ -64,7 +64,7 @@
                 <div class="top-bar" id="responsive-menu">
                     <div class="top-bar-left">
                         <ul class="dropdown menu" data-dropdown-menu >
-                            <li class="menu-text">smatter.cn</li>
+                            <li class="menu-text">{% for web_setting in web_settings %}{{ web_setting.web_name }}{% endfor %}</li>
                             <li class="has-submenu ">
                                 <a href="{% url 'mysite:post_list' %}" {% block target %}target="_parent"{% endblock%}>文章列表</a>
                             </li>
@@ -94,9 +94,9 @@
             <hr style="border:1px solid #555 ;"/>
 
             <div class="footer text-center">
-                Design by Bingo <a href="">沪ICP备11002373号-1</a> 
-                <br />
-                E-mail:1358223058@qq.com
+                {% for web_setting in web_settings %}
+                    {{ web_setting.web_footer_body|safe }}
+                {% endfor %}
             </div>
             <br />
         </div>

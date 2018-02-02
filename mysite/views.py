@@ -1,11 +1,12 @@
 from django.shortcuts import render,get_object_or_404
 from django.db.models import Count
-from .models import Category,Tag,Post,Comment,AboutSite,AboutMe,FriendWeb,MessageBoard
+from .models import Category,Tag,Post,Comment,AboutSite,AboutMe,FriendWeb,MessageBoard,WebSettings
 from django.core.paginator import Paginator,EmptyPage,PageNotAnInteger
 
 # Create your views here.
 
 tags_color=['primary','secondary','success','warning','alert']*5
+web_settings=WebSettings.objects.filter(active=True)
 
 def get_categories():
     return Category.objects.all()
@@ -48,7 +49,8 @@ def post_list(request,tag_slug=None,cate_slug=None):
                                        'cates_list':cates_list,
                                        'comments_last':comments_last,
                                        'tags_list':tags_list,
-                                       'tags_color':tags_color,})
+                                       'tags_color':tags_color,
+                                       'web_settings':web_settings,})
 
 
 def post_detail(request,year,month,day,slug,tag_slug=None,cate_slug=None):
@@ -89,7 +91,8 @@ def post_detail(request,year,month,day,slug,tag_slug=None,cate_slug=None):
                                          'comments':comments,
                                          'comments_last':comments_last,
                                          'tags_list':tags_list,
-                                         'tags_color':tags_color,})
+                                         'tags_color':tags_color,
+                                         'web_settings':web_settings,})
 
 def about(request):
     aboutsite_posts=AboutSite.objects.all()
@@ -107,4 +110,5 @@ def about(request):
     return render(request,'about.html',{'aboutsite_posts':aboutsite_posts,
                                         'aboutme_posts':aboutme_posts,
                                         'messages':messages,
-                                        'friend_web_list':friend_web_list,})
+                                        'friend_web_list':friend_web_list,
+                                        'web_settings':web_settings,})
