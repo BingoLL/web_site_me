@@ -34,36 +34,29 @@
                     <div class="small-4 medium-3 large-3">
                         <span class="text-right" style=""><i class="fi-eye">{{ post.views }}</i>&nbsp;&nbsp;&nbsp;<a href="#comments" target="_parent"><i class="fi-comments">&nbsp;{{ comments.count }}</i></a></span>
                     </div>
-
                 </div>
                 <hr style="height:1px;border:none;margin-top:5px;padding:0;border-top:1px dashed #808080;" />
                 <div class="grid-x grid-padding-x">
-
                     <div class="small-12 medium-12 large-12 cell">
                         {{ post.body|safe }}
                     </div>
-
-
-
                 </div>
             </div>
             <!--提交评论-->
             <div class="callout "><a name="comments"></a>
 
-                <form class="grid-container" action="" method="post" data-abide novalidate target="_parent">
+                <form id="comments-add" class="grid-container" action="" method="post" data-abide novalidate target="_parent">
                     <div class="grid-x grid-padding-x">
                         <label class="small-12 medium-12 large-12">
-                            <textarea name="cc_comment" placeholder="承蒙赐教，感激不尽！" required></textarea>
+                            <textarea id="id_comment" name="cc" placeholder="承蒙赐教，感激不尽！" required></textarea>
                         </label>
 
                         <label class="small-6 medium-6">
-                            <input type="text" name="cc_name" placeholder="您的昵称" required />
+                            <input type="text" id="id_name" name="cc_name" placeholder="您的昵称" required />
                         </label>
-                        <button class="button success small-offset-2 small-4 medium-3" type="submit">提交评论</button>
+                        <button class="button success small-offset-2 small-4 medium-3" type="submit" id="submit_c">提交评论</button>
                         {% csrf_token %}
                     </div>
-
-
                 </form>
             </div><!--提交评论-->
             <!--评论列表-->
@@ -90,11 +83,38 @@
                         </div>
                     </li>
                     {% endfor %}
+
                 </ul>
             </div>
-
         </div><!--detail contents-->
         {% include 'side-bar.html' %}
     </div>
 </div>
+{% endblock %}
+{% block jscontent %}
+    <script>
+    $(document).ready(function () {
+        $.ajaxSetup({
+                 data: {csrfmiddlewaretoken: '{{ csrf_token }}' },
+            });
+        $('#comments-add').submit(function () {
+            var cc_name=$('#id_name').val();
+            var cc = $('#id_comment').val();
+            $.ajax({
+                type:'POST',
+                url:"{% url 'mysite:submit_comments' post.id %}",
+                data:{'cc_name':cc_name,'cc':cc},
+                success:function (ret) {
+                    $('#id_name').val('');
+                    $('#id_comment').val('');
+                    alert('您已提交评论，请勿重复提交。');
+                },
+                error:function () {
+                    alert('失败了')
+                },
+            });
+            return false;
+        });
+    });
+    </script>
 {% endblock %}

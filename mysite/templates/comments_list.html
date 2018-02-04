@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--评论列表-->
+<div class="callout">
+    <h5>
+    {% if comments.count %}
+        共有{{ comments.count }}条评论：
+    {% else %}
+        暂无评论内容
+    {% endif %}
+    </h5>
+    <hr style="height:1px;border:none;margin-top:5px;padding:0;border-top:1px dashed #808080;" />
+    <ul class="grid-container">
+    {{ post.id }}\{{ comments.count }}
+        {% for comment in comments %}
+        <li class="grid-x grid-padding-x" style="color:#808080;">
+            <div class="small-11">
+                <span class="">{{ comment.reader_name }}</span>&nbsp;&nbsp;&nbsp;<span>{{ comment.created_time }}</span>
+            </div>
+            <div class="small-1 text-right">
+                <span>{{ forloop.counter }}#</span>
+            </div>
+            <div class="small-12">
+                {{ comment.body }}
+            </div>
+        </li>
+        {% endfor %}
+
+        {% if messages.count %}
+            {% for message in messages %}
+            <li class="grid-x grid-padding-x" style="color:#808080;">
+                <div class="small-11">
+                    <span class="">{{ message.name }}</span>&nbsp;&nbsp;&nbsp;<span>{{ message.created }}</span>
+                </div>
+                <div class="small-1 text-right">
+                    <span>{{ forloop.revcounter }}#</span>
+                </div>
+                <div class="small-12">
+                    {{ message.body }}
+                </div>
+            </li>
+            {% endfor %}
+        {% endif %}
+    </ul>
+</div>
+</body>
+</html>

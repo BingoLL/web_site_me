@@ -18,7 +18,7 @@
     </script>
 </head>
 <body>
-    <div class="off-canvas-wrapper">
+    <div class="off-canvas-wrapper" >
         <div class="off-canvas position-left" id="offCanvasLeft" data-off-canvas>
             <!--navbar vertical-->
             <div class="grid-container">
@@ -56,7 +56,6 @@
                         <div class="title-bar-title">Welcome to my blog</div>
                     </div>
                     <div class="title-bar-right" data-responsive-toggle="responsive-menu" data-hide-for="medium">
-                        <!--<button class="menu-icon" type="button" data-toggle="responsive-menu"></button>-->
                         <button class="menu-icon" type="button" data-open="offCanvasLeft"></button>
                         <div class="title-bar-title"></div>
                     </div>
@@ -93,7 +92,7 @@
 
             <hr style="border:1px solid #555 ;"/>
 
-            <div class="footer text-center">
+            <div class="footer text-center" style="">
                 {% for web_setting in web_settings %}
                     {{ web_setting.web_footer_body|safe }}
                 {% endfor %}
@@ -102,9 +101,11 @@
         </div>
     </div>
         <script src="{% static 'js/vendor/jquery.js' %}"></script>
+        <script src="{% static 'js/vendor/jquery.form.js' %}"></script>
         <script src="{% static 'js/vendor/what-input.js' %}"></script>
         <script src="{% static 'js/vendor/foundation.js' %}"></script>
         <script src="{% static 'js/app.js' %}"></script>
+        {% block jscontent %}{% endblock %}
 
 </body>
 </html>

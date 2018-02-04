@@ -28,14 +28,14 @@
         <!--留言墙-->
         <div class="tabs-panel" id="panel3">
             <!--提交评论-->
-            <form class="grid-container" action="" method="post" data-abide novalidate>
+            <form id="messages_add" class="grid-container" action="" method="post" data-abide novalidate>
                 <div class="grid-x grid-padding-x">
                     <label class="small-12 medium-12 large-12">
-                        <textarea name="message_body" placeholder="承蒙赐教，感激不尽！" required></textarea>
+                        <textarea id="message_body" name="message_body" placeholder="承蒙赐教，感激不尽！" required></textarea>
                     </label>
 
                     <label class="small-6 medium-4 large-3">
-                        <input type="text" name="message_name" placeholder="您的昵称" required />
+                        <input type="text" id="message_name" name="message_name" placeholder="您的昵称" required />
                     </label>
                     <button class="button success small-offset-2 small-4 medium-offset-1 medium-3 large-2" type="submit">提交评论</button>
                     {% csrf_token %}
@@ -61,17 +61,8 @@
                 {% endfor %}
             {% endif %}
             </ul><!--评论列表-->
-            <ul class="pagination text-center" role="navigation" aria-label="Pagination">
-                <li class="pagination-previous disabled">Previous</li>
-                <li class="current"><span class="show-for-sr">You're on page</span> 1</li>
-                <li><a href="#" aria-label="Page 2">2</a></li>
-                <li><a href="#" aria-label="Page 3">3</a></li>
-                <li><a href="#" aria-label="Page 4">4</a></li>
-                <li class="ellipsis"></li>
-                <li><a href="#" aria-label="Page 12">12</a></li>
-                <li><a href="#" aria-label="Page 13">13</a></li>
-                <li class="pagination-next"><a href="#" aria-label="Next page">Next</a></li>
-            </ul>
+            {% include 'pagination.html' with page=posts %}
+
         </div><!--留言墙-->
         <!--友情链接-->
         <div class="tabs-panel" id="panel4">
@@ -95,4 +86,31 @@
 
     </div>
 </div>
+{% endblock %}
+{% block jscontent %}
+    <script>
+    $(document).ready(function () {
+        $.ajaxSetup({
+                 data: {csrfmiddlewaretoken: '{{ csrf_token }}' },
+            });
+        $('#messages_add').submit(function () {
+            var cc_name=$('#message_name').val();
+            var cc = $('#message_body').val();
+            $.ajax({
+                type:'POST',
+                url:"{% url 'mysite:submit_messages' %}",
+                data:{'cc_name':cc_name,'cc':cc},
+                success:function (ret) {
+                    $('#message_name').val('');
+                    $('#message_body').val('');
+                    alert('您已提交留言，请勿重复提交。');
+                },
+                error:function () {
+                },
+
+            });
+            return false;
+        });
+    });
+    </script>
 {% endblock %}

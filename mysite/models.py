@@ -10,7 +10,7 @@ from django.core.urlresolvers import reverse
 import os,datetime,uuid
 
 from sorl.thumbnail import get_thumbnail,ImageField
-from easy_thumbnails.fields import ThumbnailerImageField
+#from easy_thumbnails.fields import ThumbnailerImageField
 from ckeditor.fields import RichTextField
 from ckeditor_uploader.fields import RichTextUploadingField
 
@@ -50,8 +50,8 @@ class Post(models.Model):
     STATUS_CHOICES=(('draft','Draft'),('published','Published'),)
     title=models.CharField(max_length=250,verbose_name='文章标题')
     #slug=models.SlugField(max_length=250,unique_for_date='publish')
-    #post_thumb=models.ImageField(upload_to='photos/thumbs/%Y/%m/%d/',default='',verbose_name='文章缩略图',help_text='请上传186*90像素图片，用于本文章缩略图')
-    post_thumb=ThumbnailerImageField(upload_to='photos/thumbs/%Y/%m/%d/',blank=True,verbose_name='文章缩略图',help_text='请上传186*90像素图片，用于本文章缩略图')
+    post_thumb=models.ImageField(upload_to='photos/thumbs/%Y/%m/%d/',blank=True,null=True,verbose_name='文章缩略图',help_text='请上传186*90像素图片，用于本文章缩略图')
+    #post_thumb=ThumbnailerImageField(upload_to='photos/thumbs/%Y/%m/%d/',blank=True,verbose_name='文章缩略图',help_text='请上传186*90像素图片，用于本文章缩略图')
     #post_thumb_o=get_thumbnail('/home/bingo/1-gittest-projiects/01-website-me/web_site_me/media/photos/thumbs/2018/02/02/009.jpg','100x100', crop='center', quality=99)
     #post_thumb=get_thumbnail(upload_to='photos/thumbs/%Y/%m/%d/','186x90',corp='center',quality=99)
     category=models.ForeignKey(Category,verbose_name='类别')
